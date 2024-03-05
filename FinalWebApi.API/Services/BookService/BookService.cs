@@ -41,7 +41,7 @@ public class BookService : IBookService
         var existingBook = dbContext.Books.Where(b => b.id == data.id).FirstOrDefault();
 
         if (existingBook == null) {
-            return result.AddError(new NotFoundError("Cannot find book"));
+            return result.AddError(new NotFoundError());
         }
 
         existingBook.title = data.title;

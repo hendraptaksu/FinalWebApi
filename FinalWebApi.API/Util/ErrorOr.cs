@@ -7,9 +7,9 @@ public abstract class CustomError
 
 public class NotFoundError : CustomError
 {
-    public NotFoundError(string msg)
+    public NotFoundError()
     {
-        Message = msg;
+        Message = "Not Found";
     }
 }
 
@@ -21,13 +21,18 @@ public class InternalError : CustomError
     }
 }
 
-// Class that represent Error or TValue
+/// <summary>
+/// Class that represent Error or TValue
+/// </summary>
+/// <typeparam name="TValue"></typeparam>
 public class ErrorOr<TValue>
 {
     public CustomError Error { get; private set; }
     public TValue Value { get; private set; }
 
-    // Check if this object has error;
+    /// <summary>
+    /// Check if this object has error
+    /// </summary>
     public bool HasError = false;
 
     public ErrorOr<TValue> AddError(CustomError error)

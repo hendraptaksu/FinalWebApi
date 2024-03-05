@@ -33,11 +33,11 @@ public class BookController : ControllerBase
 
             var book = bookService.CreateBook(newBook);
 
-            return new BaseResponse<BookModel>
+            return StatusCode(StatusCodes.Status201Created, new BaseResponse<BookModel>
             {
                 Message = "Success",
                 Data = book,
-            };
+            });
         }
         catch (Exception e)
         {
@@ -84,11 +84,11 @@ public class BookController : ControllerBase
             });
         }
 
-        return new BaseResponse<BookModel?>
+        return Ok(new BaseResponse<BookModel?>
         {
             Message = "Success",
             Data = book,
-        };
+        });
     }
 
     [HttpPut("{id}")]
@@ -128,15 +128,15 @@ public class BookController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    public ActionResult<BaseResponse<BookModel>> DeleteStudentById(long id)
+    public ActionResult<BaseResponse<BookModel>> DeleteBook(long id)
     {
 
         var success = bookService.DeleteBook(id);
         if (!success)
         {
-            return BadRequest(new BaseResponse<BookModel>
+            return NotFound(new BaseResponse<BookModel>
             {
-                Message = "Not found"
+                Message = "Not Found"
             });
         }
 
