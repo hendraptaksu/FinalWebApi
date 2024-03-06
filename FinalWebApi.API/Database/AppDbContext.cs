@@ -9,5 +9,6 @@ namespace FinalWebApi.API.Database
 
         // add models to database context
         public virtual DbSet<BookModel> Books { get; set; }
+        public virtual DbSet<UserModel> Users { get; set; }
     }
 }

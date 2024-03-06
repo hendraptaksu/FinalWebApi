@@ -1,6 +1,5 @@
 # FinalWebApi
-This is Mini Project for Onboarding at some company.
-This app is a REST API that is build using .NET 6 Framework generated using `dotnet new webapi` command.
+FinalWebApi is a REST API project that is built using .NET 6 Framework generated using `dotnet new webapi` command.
 This repo contains 2 .NET projects:
 - FinalWebApi.API: contains REST API code.
 - FinalWebApi.Tests: contains testing code for the FinalWebApi.API project.

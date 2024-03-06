@@ -4,6 +4,7 @@ using FinalWebApi.API.Services.BookService;
 using Microsoft.AspNetCore.Mvc;
 using FinalWebApi.API.Models;
 using FinalWebApi.API.Util;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FinalWebApi.API.Controllers;
 
@@ -18,6 +19,7 @@ public class BookController : ControllerBase
         this.bookService = bs;
     }
 
+    [Authorize(AuthenticationSchemes = "Bearer")]
     [HttpPost]
     public ActionResult<BaseResponse<BookModel>> CreateBook(CreateBookRequest req)
     {
