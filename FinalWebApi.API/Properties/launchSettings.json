@@ -12,7 +12,7 @@
     "FinalWebApi.API": {
       "commandName": "Project",
       "dotnetRunMessages": true,
-      "launchBrowser": false,
+      "launchBrowser": true,
       "launchUrl": "swagger",
       "applicationUrl": "http://localhost:8080",
       "environmentVariables": {

@@ -13,5 +13,5 @@ To run the project. Either use available C# IDE (JB Rider, Visual Studio, VS Cod
 ## Run Test
 To run testing use command `dotnet test` or use your favorite IDE.
 
-## Seeing available endpoints
+## To see available endpoints
 Swagger page will automatically launced on the browser. You can use swagger to play around with the endpoint.
