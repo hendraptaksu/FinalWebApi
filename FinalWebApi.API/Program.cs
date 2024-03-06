@@ -1,6 +1,7 @@
 using System.Text;
 using FinalWebApi.API.Database;
 using FinalWebApi.API.Services.BookService;
+using FinalWebApi.API.Services.HashingService;
 using FinalWebApi.API.Services.TokenService;
 using FinalWebApi.API.Services.UserService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -20,6 +21,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddScoped<IBookService, BookService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddSingleton<IPasswordHashingService, BCryptPasswordHashingService>();
 
 //Jwt configuration starts here
 var jwtIssuer = builder.Configuration.GetSection("Jwt:Issuer").Get<string>();

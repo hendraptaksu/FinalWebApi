@@ -5,6 +5,7 @@ using FinalWebApi.API.Services.TokenService;
 using FinalWebApi.API.Services.UserService;
 using FinalWebApi.API.Models;
 using BC = BCrypt.Net.BCrypt;
+using FinalWebApi.API.Services.HashingService;
 
 
 namespace FinalWebApi.API.Controllers;
@@ -15,11 +16,13 @@ public class AuthController : ControllerBase
 {
     private readonly ITokenService tokenService;
     private readonly IUserService userService;
+    private readonly IPasswordHashingService passwordHashingService;
 
-    public AuthController(ITokenService ts, IUserService us)
+    public AuthController(ITokenService ts, IUserService us, IPasswordHashingService phs)
     {
-        this.tokenService = ts;
-        this.userService = us;
+        tokenService = ts;
+        userService = us;
+        passwordHashingService = phs;
     }
 
     [HttpPost]
@@ -34,7 +37,7 @@ public class AuthController : ControllerBase
         }
 
         // compare plain and hashed password, if not matched return bad request
-        if (!BC.Verify(req.password, user.password_hash)) {
+        if (!passwordHashingService.Verify(req.password, user.password_hash)) {
             return BadRequest(new BaseResponse<string>{
                 Message = "Invalid credential",
             });
@@ -57,7 +60,7 @@ public class AuthController : ControllerBase
             {
                 email = req.email,
                 username = req.username,
-                password_hash = BC.HashPassword(req.password),
+                password_hash = passwordHashingService.HashPassword(req.password),
             };
 
             userService.CreateUser(newUser);

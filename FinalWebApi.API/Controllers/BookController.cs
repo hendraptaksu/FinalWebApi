@@ -93,6 +93,7 @@ public class BookController : ControllerBase
         });
     }
 
+    [Authorize(AuthenticationSchemes = "Bearer")]
     [HttpPut("{id}")]
     public ActionResult<BaseResponse<BookModel>> UpdateBook(long id, [FromBody] UpdateBookRequest req)
     {
@@ -129,6 +130,7 @@ public class BookController : ControllerBase
         });
     }
 
+    [Authorize(AuthenticationSchemes = "Bearer")]
     [HttpDelete("{id}")]
     public ActionResult<BaseResponse<BookModel>> DeleteBook(long id)
     {
