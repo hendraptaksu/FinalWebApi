@@ -15,3 +15,6 @@ To run testing use command `dotnet test` or use your favorite IDE.
 
 ## To see available endpoints
 Swagger page will automatically launced on the browser. You can use swagger to play around with the endpoint.
+
+## Video Recording
+Can see video recording at https://youtu.be/4bPSIRmKZZo
